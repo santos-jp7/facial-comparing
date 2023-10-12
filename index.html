@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Comparação facial</title>
+
+    <script src="./js/face-api.js"></script>
+    <script src="./js/canvas2image.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/loader.css">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+
+<body>
+    <div class="loader-div hide" id="loader">
+        <span class="loader">
+            <span></span>
+            <span></span>
+        </span>
+
+        <br>
+
+        <span>Calculando...</span>
+    </div>
+
+    <!-- Image and text -->
+    <nav class="navbar navbar-light bg-primary">
+        <a class="navbar-brand text-light" href="">
+            <img src="./img/logo.png" width="30" height="30" class="d-inline-block align-top mx-3" alt="">
+            <span>Comparação facial</span>
+        </a>
+    </nav>
+
+    <br>
+
+    <div class="container">
+
+        <div class="row" id="boxs">
+            <div class="col border border-secondary m-1 p-1 rounded">
+                <video class="d-flex mx-auto" id="stream0"></video>
+                <img class="d-flex mx-auto" id="preview0" style="display: none;" />
+
+                <br>
+
+                <div class="text-center" id="action0">
+                    <button type="button" class="btn btn-primary my-1" onclick="loadImage(0)"><svg
+                            xmlns="http://www.w3.org/2000/svg" height="1.5em"
+                            viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                            <path
+                                d="M512 144v288c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V144c0-26.5 21.5-48 48-48h88l12.3-32.9c7-18.7 24.9-31.1 44.9-31.1h125.5c20 0 37.9 12.4 44.9 31.1L376 96h88c26.5 0 48 21.5 48 48zM376 288c0-66.2-53.8-120-120-120s-120 53.8-120 120 53.8 120 120 120 120-53.8 120-120zm-32 0c0 48.5-39.5 88-88 88s-88-39.5-88-88 39.5-88 88-88 88 39.5 88 88z" />
+                        </svg></button> <span>&bull;</span>
+
+                    <input type="file" id="input0" accept="image/*" onchange="loadImage(0)">
+                </div>
+            </div>
+            <div class="col border border-secondary m-1 p-1 rounded">
+                <video class="d-flex mx-auto" id="stream1"></video>
+                <img class="d-flex mx-auto" id="preview1" style="display: none;" />
+
+                <br>
+
+                <div class="text-center" id="action1">
+                    <button type="button" class="btn btn-primary my-1" onclick="loadImage(1)"><svg
+                            xmlns="http://www.w3.org/2000/svg" height="1.5em"
+                            viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                            <path
+                                d="M512 144v288c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V144c0-26.5 21.5-48 48-48h88l12.3-32.9c7-18.7 24.9-31.1 44.9-31.1h125.5c20 0 37.9 12.4 44.9 31.1L376 96h88c26.5 0 48 21.5 48 48zM376 288c0-66.2-53.8-120-120-120s-120 53.8-120 120 53.8 120 120 120 120-53.8 120-120zm-32 0c0 48.5-39.5 88-88 88s-88-39.5-88-88 39.5-88 88-88 88 39.5 88 88z" />
+                        </svg></button> <span>&bull;</span>
+
+                    <input type="file" id="input1" accept="image/*" onchange="loadImage(1)">
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <button type="button" id="send" class="d-flex mx-auto btn btn-primary" onclick="compareFaces()"
+            disabled>Comparar</button>
+
+        <div class="w-100 hide" id="result">
+            <div class="row w-50 mx-auto">
+                <div class="col">
+                    <div class="d-flex mx-auto" id="circle"
+                        style="width: 150px; height: 150px; border-radius: 50%; display: flex; flex-direction: column; justify-content: center; text-align: center; color: #FFF;">
+                        <b>Distancia: <br><span id="distance">0</span></b>
+                    </div>
+                </div>
+                <div class="col my-auto">
+                    <h3 id="message">Unknown</h3>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="w-50 mx-auto">
+                <button class="d-flex mx-auto btn btn-primary" onclick="location.reload()">Nova consulta</button>
+            </div>
+        </div>
+
+        <br><br><br><br>
+
+        <script src="./js/script.js"></script>
+</body>
+
+</html>

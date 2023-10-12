@@ -1,0 +1,11 @@
+.hide {
+    display: none !important;
+}
+
+.bg-red{
+    background-color: #930000;
+}
+
+.bg-green{
+    background-color: #198754;
+}
